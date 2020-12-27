@@ -1,13 +1,5 @@
 import java.io.*;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class ModelFile extends Thread{
 
@@ -40,72 +32,51 @@ public class ModelFile extends Thread{
             //read the whole file
             scanner.useDelimiter("\\Z");
             if(!scanner.hasNext()) return; // if txt is empty
-
             String fileText = scanner.next();
 
 
-            //tokenize into individual words
-            Matcher matcher = Pattern.compile("[A-Za-zÀ-ÖØ-öø-ÿ]{"+nGram+",}").matcher(fileText); // extract each word
 
-            // for each word get the n-gram
-            matcher.results().forEach(m -> nGramOfWord(m.group(0))); // java 9 >=
+            StringBuilder sb = new StringBuilder();
 
-
-
-            /*
-
-            */
-
-
-           /* StringBuilder sb = new StringBuilder();
-
-            fileText.chars().forEach(
-                    i -> {
-
+            fileText.chars().forEach(i -> { // n-gram
                         Character c = (char) i;
-                        if(!c.toString().matches("[A-Za-zÀ-ÖØ-öø-ÿ]")){
-                            sb.setLength(0); // clean
-                        }else{
-                            sb.append(c);
+                        if(c.toString().matches("[A-Za-zÀ-ÖØ-öø-ÿ]")){ // if is letter
+                            sb.append(c); // add letter
                             if(sb.length() >= nGram){
                                 model.addNGram(sb.toString().toLowerCase());
                                 sb.deleteCharAt(0);
                             }
+                        }else{
+                            sb.setLength(0); // clean
                         }
-
-                    }
-            );*/
-
+                    });
 
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+
     }
 
+/*
+* al angle: 64.201979
+en angle: 38.509954
+fr angle: 54.977365
+it angle: 51.960834
+ge angle: 53.608462
+es angle: 53.444583
+Closest: en angle: 38.509954
+* */
 
-
-    /**
-     * Extracts the n-gram & adds the occurrences to the model
-     * @param word a word with length >= nGram
-     * */
-    private void nGramOfWord(String word) {
-
-        IntStream.range(0, word.length() - nGram + 1)
-                .forEach(
-                        i -> model.addNGram(word.substring(i, i + nGram).toLowerCase())
-                );
-
-    }
 
     private void calculateNorm(){
 
-        Integer reduce = model.values().stream()
-                .reduce(0, (sum, toSum) -> sum + (toSum * toSum));
+        int sum = model.values().stream()
+                .mapToInt(i -> i * i)
+                .sum();
 
-       // int sum = model.values().stream().mapToInt(i -> i * i).sum();
-
-        norm = Math.sqrt(reduce);
+        norm = Math.sqrt(sum);
     }
 
     synchronized public double getNorm(){

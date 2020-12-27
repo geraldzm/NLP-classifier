@@ -1,9 +1,3 @@
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.StringTokenizer;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 public class Main extends Thread{
 
@@ -53,7 +47,6 @@ public class Main extends Thread{
         }
 
        new Main(args[0], nGram).start();
-
 
     }
 

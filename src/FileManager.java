@@ -61,7 +61,7 @@ public class FileManager {
     public void calculateModelLanguages(int nGram, ModelFile mysteryModel) {
 
         List<ModelLanguage> languages = Arrays.stream(
-                Objects.requireNonNull(folder.list((folder, subItem) -> new File(folder, subItem).isDirectory())) // get each sub-directory
+                Objects.requireNonNull(folder.list((folder, subItem) -> new File(folder, subItem).isDirectory())) // all sub-directories
         ).map(str -> new ModelLanguage(new File(folder, str), nGram, mysteryModel)) // create a VectorLanguage/thread for each directory
                 .collect(Collectors.toList()); //toList
 
