@@ -1,4 +1,4 @@
-# NPL-classifier
+# NLP-classifier
 
 Text classifier using [Cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity).
 
