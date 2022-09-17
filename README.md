@@ -6,7 +6,7 @@ This project could be used to identify spam messages, tell the mood of a text,
 the language in which a text is written or even the subject of the text; 
 if the text is taking about sports, politics, tech, etc... 
 
-Any type of text classification is posible with the correct data :)
+Any type of text classification is possible with the correct data :)
 
 ## Manual
 
