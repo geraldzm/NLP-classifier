@@ -1,12 +1,11 @@
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public class ThreadPool {
 
-    public void executeAndAwait(List<? extends Thread> threads){
+    public void executeAndAwait(List<? extends Thread> threads) {
         ExecutorService pool = Executors.newCachedThreadPool();
         threads.forEach(pool::execute); // start each thread
         shutdownAndAwaitTermination(pool); // wait until all threads finish

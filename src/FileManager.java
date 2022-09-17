@@ -33,7 +33,7 @@ public class FileManager {
         return fileManager;
     }
 
-    private static boolean validateFolder(File folder){
+    private static boolean validateFolder(File folder) {
 
         if(!folder.exists()){
             System.out.println("The given folder: " + folder.getAbsolutePath() + " does not exist");
@@ -65,7 +65,7 @@ public class FileManager {
         ).map(str -> new ModelLanguage(new File(folder, str), nGram, mysteryModel)) // create a VectorLanguage/thread for each directory
                 .collect(Collectors.toList()); //toList
 
-        if(languages.size() == 0){
+        if(languages.size() == 0) {
             language = "None";
             return;
         }

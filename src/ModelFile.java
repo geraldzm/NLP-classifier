@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class ModelFile extends Thread{
+public class ModelFile extends Thread {
 
     private final File file; // txt to read
     private final MyHashTable model; // histogram / frequency table
@@ -27,7 +27,7 @@ public class ModelFile extends Thread{
     @Override
     public void run() {
 
-        try (Scanner scanner = new Scanner(file)){
+        try (Scanner scanner = new Scanner(file)) {
 
             //read the whole file
             scanner.useDelimiter("\\Z");
@@ -40,13 +40,13 @@ public class ModelFile extends Thread{
 
             fileText.chars().forEach(i -> { // n-gram
                         Character c = (char) i;
-                        if(c.toString().matches("[A-Za-zÀ-ÖØ-öø-ÿ]")){ // if is letter
+                        if(c.toString().matches("[A-Za-zÀ-ÖØ-öø-ÿ]")) { // if is letter
                             sb.append(c); // add letter
-                            if(sb.length() >= nGram){
+                            if(sb.length() >= nGram) {
                                 model.addNGram(sb.toString().toLowerCase());
                                 sb.deleteCharAt(0);
                             }
-                        }else{
+                        } else {
                             sb.setLength(0); // clean
                         }
                     });
@@ -56,21 +56,9 @@ public class ModelFile extends Thread{
             e.printStackTrace();
         }
 
-
     }
 
-/*
-* al angle: 64.201979
-en angle: 38.509954
-fr angle: 54.977365
-it angle: 51.960834
-ge angle: 53.608462
-es angle: 53.444583
-Closest: en angle: 38.509954
-* */
-
-
-    private void calculateNorm(){
+    private void calculateNorm() {
 
         int sum = model.values().stream()
                 .mapToInt(i -> i * i)
@@ -79,13 +67,13 @@ Closest: en angle: 38.509954
         norm = Math.sqrt(sum);
     }
 
-    synchronized public double getNorm(){
+    synchronized public double getNorm() {
         if(norm == -1)
             calculateNorm();
         return norm;
     }
 
-    public MyHashTable getVector(){
+    public MyHashTable getVector() {
         return model;
     }
 

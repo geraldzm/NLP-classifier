@@ -1,6 +1,5 @@
 import java.io.File;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class ModelLanguage extends Thread implements Comparator<ModelLanguage> {
@@ -62,11 +61,11 @@ public class ModelLanguage extends Thread implements Comparator<ModelLanguage> {
         System.out.printf("%s angle: %f%n", getNameFolder(), Math.toDegrees(vectorDistance));
     }
 
-    public String getNameFolder(){
+    public String getNameFolder() {
         return subFolder.getName();
     }
 
-    public double getVectorDistance(){
+    public double getVectorDistance() {
         return vectorDistance;
     }
 

@@ -26,16 +26,14 @@ public class Main extends Thread{
 
     public static void main(String[] args) {
 
-        args = new String[]{"/home/gerald/develop/NLP/LocalFolder"};
-
-        if(args.length == 0){
+        if(args.length == 0) {
             System.err.println("There is no folder path");
             System.exit(1);
         }
 
         int nGram = 2;
 
-        if(args.length == 2){
+        if(args.length == 2) {
             try {
                 nGram = Integer.parseInt(args[1]);
                 if (nGram < 1) throw new NumberFormatException();
