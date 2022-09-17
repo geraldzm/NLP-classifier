@@ -13,7 +13,7 @@ Any type of text classification is posible with the correct data :)
 Takes 2 arguments; a folder path and an optional [n-gram](https://en.wikipedia.org/wiki/N-gram) number (default is 2).
 
 The folder path is expected to have a mystery text inside, and a group of folders,
-the folders represent the categories in which the mistery text will be classified.
+the folders represent the categories in which the mystery text will be classified.
 
 ## Functionality 
 A thread will be created for each category, and these threads will create a thread for 
@@ -70,5 +70,5 @@ es angle: 73.536767
 Closest: en angle: 67.709670
 ```
 
-The data inside the folder ***en*** is the most similar to the mistery file. 
+The data inside the folder ***en*** is the most similar to the mystery file. 
 
