@@ -1,6 +1,6 @@
 # NLP-classifier
 
-Text classifier using [Cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity).
+Natural language processing (NLP) classifier using [Cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity).
 
 This project could be used to identify spam messages, tell the mood of a text, 
 the language in which a text is written or even the subject of the text; 
